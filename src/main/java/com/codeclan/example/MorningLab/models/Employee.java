@@ -1,6 +1,8 @@
 package com.codeclan.example.MorningLab.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -19,6 +21,8 @@ public class Employee {
     @Column(name = "employee_number")
     private int employeeNumber;
 
+    private List<Project> projects;
+
     public Employee() {
 
     }
@@ -27,6 +31,7 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeNumber = employeeNumber;
+        this.projects = new ArrayList<>();
     }
 
     public long getId() {
@@ -59,5 +64,17 @@ public class Employee {
 
     public void setEmployeeNumber(int employeeNumber) {
         this.employeeNumber = employeeNumber;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
+    public void addProject(Project project) {
+        this.projects.add(project);
     }
 }
